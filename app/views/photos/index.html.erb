@@ -1,0 +1,13 @@
+<h1>Listing photos</h1>
+
+<table>
+  <tr>
+    <th>Path</th>
+  </tr>
+
+  <% @photos.each do |photo| %>
+    <tr>
+      <td><%= photo.path %></td>
+    </tr>
+  <% end %>
+</table>
