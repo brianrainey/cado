@@ -39,3 +39,7 @@ bower.json
 
 # Vagrant
 .vagrant/*
+
+# Misc
+*DS_Store
+photos/*
