@@ -1,22 +1,13 @@
-<p>
-  <strong>Path:</strong>
-  <%= @photo.path %>
-</p>
 
-<h2>Comments</h2>
+<img src="/img/<%= @photo.id %>" width="300"/>
+
 <% @photo.comments.each do |comment| %>
   <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </p>
-
-  <p>
-    <strong>Comment:</strong>
+    <%= comment.commenter %>:
     <%= comment.body %>
   </p>
 <% end %>
 
-<h2>Add a comment:</h2>
 <%= form_for([@photo, @photo.comments.build]) do |f| %>
   <p>
     <%= f.label :commenter %><br>
