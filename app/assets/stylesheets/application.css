@@ -12,4 +12,27 @@
  *
  *= require_tree .
  *= require_self
+
  */
+
+body {
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+}
+
+img {
+    max-width: 100%;
+}
+
+textarea {
+    max-width: 100%;
+}
+
+#welcome-message {
+    background-color: #C7FBB4;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+}
+
+.commenter {
+    color: #337DD1;
+}

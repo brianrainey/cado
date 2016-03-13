@@ -23,7 +23,9 @@ class PhotosController < ApplicationController
 
   def img
     photo = Photo.find(params[:id])
-    send_file("#{Rails.root}/photos/#{photo.path}")
+    send_file("#{Rails.root}/photos/#{photo.path}",
+              type: "image/jpeg",
+              disposition: 'inline')
   end
 
   private

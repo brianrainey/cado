@@ -1,26 +1,22 @@
 
-<img src="/img/<%= @photo.id %>" width="300"/>
+<a href="/img/<%= @photo.id %>" target="_blank">
+  <img src="/img/<%= @photo.id %>" width="400"/>
+</a>
 
 <% @photo.comments.each do |comment| %>
   <p>
-    <%= comment.commenter %>:
+    <span class="commenter"><%= comment.user.display_name + " (" + comment.user.relationship + ")" %></span>:
     <%= comment.body %>
   </p>
 <% end %>
 
 <%= form_for([@photo, @photo.comments.build]) do |f| %>
   <p>
-    <%= f.label :commenter %><br>
-    <%= f.text_field :commenter %>
+    <%= f.text_area :body, size: "50x4" %>
   </p>
   <p>
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit %>
+    <%= f.submit "Add Your Comment, " + @user.relationship %>
   </p>
 <% end %>
 
-<%= link_to 'Edit', edit_photo_path(@photo) %> |
-<%= link_to 'Back', photos_path %>
+<%= link_to 'All Photos', photos_path %>

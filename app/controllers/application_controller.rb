@@ -9,7 +9,12 @@ class ApplicationController < ActionController::Base
  
     def authenticate
       authenticate_or_request_with_http_digest("All About Ava") do |username|
-        User.where(user_name: username).first.password
+        @user = User.where(user_name: username).first
+        if @user
+          @user.password
+        else
+          nil
+        end
       end
     end  
 

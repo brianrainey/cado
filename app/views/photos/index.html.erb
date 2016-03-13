@@ -1,13 +1,12 @@
-<h1>Listing photos</h1>
 
-<table>
-  <tr>
-    <th>Path</th>
-  </tr>
+<div id="welcome-message">
+  <p>Hello <%= @user.relationship %>!</p>
+  <p>Click a photo to see what everyone's saying.</p>
+  <p>Love, Ava</p>
+</div>
 
-  <% @photos.each do |photo| %>
-    <tr>
-      <td><%= photo.path %></td>
-    </tr>
-  <% end %>
-</table>
+<% @photos.each do |photo| %>
+
+<a href="/photos/<%=photo.id%>"><img src="/img/<%=photo.id%>" width="300"/></a>
+
+<% end %>
