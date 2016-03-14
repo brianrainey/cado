@@ -27,6 +27,10 @@ textarea {
     max-width: 100%;
 }
 
+a {
+    max-width: 100%;
+}
+
 #welcome-message {
     background-color: #C7FBB4;
     padding: 3px 10px;
