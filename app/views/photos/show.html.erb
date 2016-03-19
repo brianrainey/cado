@@ -1,22 +1,24 @@
 
+<div class="photo-page center-block">
+
 <a href="/img/<%= @photo.id %>" target="_blank">
-  <img src="/img/<%= @photo.id %>" width="400"/>
+  <img src="/img/<%= @photo.id %>" class="img-responsive main-photo"/>
 </a>
 
 <% @photo.comments.each do |comment| %>
   <p>
-    <span class="commenter"><%= comment.user.display_name + " (" + comment.user.relationship + ")" %>:</span>
+    <span class="text-primary"><strong><%= comment.user.display_name + " (" + comment.user.relationship + ")" %>:</strong></span><br/>
     <%= comment.body %>
   </p>
 <% end %>
 
 <%= form_for([@photo, @photo.comments.build]) do |f| %>
   <p>
-    <%= f.text_area :body, size: "50x4" %>
+    <%= f.text_area :body, class: "form-control" %>
   </p>
   <p>
-    <%= f.submit "Add Your Comment, " + @user.relationship %>
+    <%= f.submit "Add Your Comment, " + @user.relationship, class: "form-control btn btn-success" %>
   </p>
 <% end %>
 
-<%= link_to 'More Photos', photos_path %>
+</div>

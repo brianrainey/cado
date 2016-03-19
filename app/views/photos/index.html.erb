@@ -1,12 +1,16 @@
 
-<div id="welcome-message">
-  <p>Hello <%= @user.relationship %>!</p>
-  <p>Click a photo to see what everyone's saying.</p>
-  <p>Love, Ava</p>
+<div class="well">
+  Hello, <strong><%= @user.relationship %></strong>! Click a photo to see what everyone's saying.
+  Love, Ava.
 </div>
 
-<% @photos.each do |photo| %>
+<% @photos.each_with_index do |photo, index| %>
 
-<a href="/photos/<%=photo.id%>"><img src="/img/<%=photo.id%>" width="300"/></a>
+<% if index % 3 == 0 then %> <div class="row"> <% end %>
+
+  <div class="col-md-4"><a href="/photos/<%=photo.id%>"><img src="/img/<%= photo.id%>" class="img-responsive index-photo"/></a></div>
+
+<% if index % 3 == 2 or index == @photos.length - 1 then %> </div> <!-- row --> <% end %>
 
 <% end %>
+
