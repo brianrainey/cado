@@ -10,7 +10,7 @@
     <div class="row">
   <% end %>
 
-  <div class="col-md-4"><a href="/photos/<%=photo.id%>"><img src="/img/<%= photo.id%>" class="img-responsive index-photo"/></a></div>
+  <div class="col-md-4"><a href="/photos/<%=photo.id%>" class="thumbnail"><img src="/img/<%= photo.id%>" class="img-responsive"/></a></div>
 
   <% if index % 3 == 2 or index == @photos.length - 1 then %>
     </div> <!-- row -->

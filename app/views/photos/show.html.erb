@@ -3,11 +3,11 @@
 
   <div class="col-md-6">  
     <a href="/img/<%= @photo.id %>" target="_blank">
-      <img src="/img/<%= @photo.id %>" class="img-responsive main-photo"/>
+      <img src="/img/<%= @photo.id %>" class="img-responsive img-thumbnail"/>
     </a>
   </div>
 
-  <div class="col-md-6">  
+  <div class="col-md-6 comments">  
     <% @photo.comments.each do |comment| %>
     <p>
       <span class="text-primary"><strong><%= comment.user.display_name + " (" + comment.user.relationship + ")" %>:</strong></span><br/>
