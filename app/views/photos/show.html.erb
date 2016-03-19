@@ -1,24 +1,28 @@
+<!-- div class="photo-page center-block" -->
+<div class="row">
 
-<div class="photo-page center-block">
+  <div class="col-md-6">  
+    <a href="/img/<%= @photo.id %>" target="_blank">
+      <img src="/img/<%= @photo.id %>" class="img-responsive main-photo"/>
+    </a>
+  </div>
 
-<a href="/img/<%= @photo.id %>" target="_blank">
-  <img src="/img/<%= @photo.id %>" class="img-responsive main-photo"/>
-</a>
+  <div class="col-md-6">  
+    <% @photo.comments.each do |comment| %>
+    <p>
+      <span class="text-primary"><strong><%= comment.user.display_name + " (" + comment.user.relationship + ")" %>:</strong></span><br/>
+      <%= comment.body %>
+    </p>
+    <% end %>
 
-<% @photo.comments.each do |comment| %>
-  <p>
-    <span class="text-primary"><strong><%= comment.user.display_name + " (" + comment.user.relationship + ")" %>:</strong></span><br/>
-    <%= comment.body %>
-  </p>
-<% end %>
-
-<%= form_for([@photo, @photo.comments.build]) do |f| %>
-  <p>
-    <%= f.text_area :body, class: "form-control" %>
-  </p>
-  <p>
-    <%= f.submit "Add Your Comment, " + @user.relationship, class: "form-control btn btn-success" %>
-  </p>
-<% end %>
-
+    <%= form_for([@photo, @photo.comments.build]) do |f| %>
+    <p>
+      <%= f.text_area :body, class: "form-control" %>
+    </p>
+    <p>
+      <%= f.submit "Add Your Comment, " + @user.relationship, class: "form-control btn btn-success" %>
+    </p>
+    <% end %>
+  </div>
+  
 </div>

@@ -6,11 +6,15 @@
 
 <% @photos.each_with_index do |photo, index| %>
 
-<% if index % 3 == 0 then %> <div class="row"> <% end %>
+  <% if index % 3 == 0 then %>
+    <div class="row">
+  <% end %>
 
   <div class="col-md-4"><a href="/photos/<%=photo.id%>"><img src="/img/<%= photo.id%>" class="img-responsive index-photo"/></a></div>
 
-<% if index % 3 == 2 or index == @photos.length - 1 then %> </div> <!-- row --> <% end %>
+  <% if index % 3 == 2 or index == @photos.length - 1 then %>
+    </div> <!-- row -->
+  <% end %>
 
 <% end %>
 
