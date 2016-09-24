@@ -5,13 +5,12 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
   host: localhost
-  username: rails
-  password: <%= ENV['APP_DATABASE_PASSWORD'] %>
 
 development:
   <<: *default
-  database: cado_dev
-  password: rails
+  database: cado_development
+  username: cado
+  password: cado
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -19,7 +18,11 @@ development:
 test:
   <<: *default
   database: cado_test
+  username: cado
+  password: cado
 
 production:
   <<: *default
   database: cado_production
+  username: rails
+  password: <%= ENV['APP_DATABASE_PASSWORD'] %>

@@ -67,21 +67,18 @@ Vagrant.configure(2) do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get update
-    sudo apt-get install -y build-essential libssl-dev libyaml-dev libreadline-dev openssl curl git-core zlib1g-dev bison libxml2-dev libxslt1-dev libcurl4-openssl-dev libsqlite3-dev sqlite3 postgresql postgresql-server-dev-9.3 ruby-dev
-    mkdir ruby-build
-    cd ruby-build
-    wget http://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.1.tar.gz
-    tar -xzf ruby-2.3.1.tar.gz
-    cd ruby-2.1.4
-    ./configure
-    make
+    sudo apt-get install -y postgresql postgresql-contrib libpq-dev libsqlite3-dev libxslt-dev libxml2-dev
+    sudo -u postgres psql --command "create role cado with createdb login password 'cado';"
+    wget -O ruby-install-0.6.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.6.0.tar.gz
+    tar -xzvf ruby-install-0.6.0.tar.gz
+    cd ruby-install-0.6.0/
     sudo make install
-    sudo rm -rf ruby-build
+    sudo ruby-install --system ruby
     cd /vagrant
-    sudo gem install bundler
-    sudo bundle install
-    # create database and rails user
-    # bin/rake db:schema:load
+    gem install bundler
+    bundle install
+    rake db:create
+    rake db:schema:load
     # import data
     # import photos
   SHELL
